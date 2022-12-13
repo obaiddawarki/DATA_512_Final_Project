@@ -1,6 +1,6 @@
 # Human Centered Data Science - Final Project
 
-About the Project
+## About the Project
 The repository contains the code and the data to reproduce the results for the analysis of the COVID-19 cases at Frankilin in
 Ohio in the United States of America. As the part of this project I wanted to understand and answer the below mentioned research questions:
 
