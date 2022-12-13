@@ -1,11 +1,14 @@
-# Human Centered Data Science - Part 1 - Collective Analysis
+# Human Centered Data Science - Final Project
 
 #About the Project
 The repository contains the code and the data to reproduce the results for the analysis of the COVID-19 cases at Frankilin in
-Ohio in the United States of America. As the part of this project I wanted to understand the effect of mask mandate that was 
-put in place at Franklin in Ohio on the infection rates in the state between February 1, 2020 through October 1, 2021. Also I tried to understand the compliance for the mask mandate and come up with statitsical model for time series analysis.
-The data analysis for this project includes data acquisition, data processing and generating the time series analysis for the number of infections and the number of days. This homework was the part of Human Centered Data Science at the University
-of Washington - Seattle for Autumn 2022. The project contains all the details to reproduce this analysis independently on any machine without the use of any specific software package.
+Ohio in the United States of America. As the part of this project I wanted to understand and answer the below mentioned questions:
+1. Does mask mandate help in the reduction of the rate of spread of covid-19 infections?
+2. Is COVID-19 spread of infections causation for unemployment rate in Franklin?
+3. How can LSTMs be used to predict the unemployment rate using the past time series data.
+the effect of mask mandate that was 
+
+The data analysis for this project includes data acquisition, data processing, statistical testing and predictive modeling. This project was the part of Human Centered Data Science at the University of Washington - Seattle for Autumn 2022. The project contains all the details to reproduce this analysis independently on any machine without the use of any specific software package.
 
 ## API Documentation For Data Download
 The data acquisition was done acquired from the three different data sources. The details for the data source is present below:
@@ -13,6 +16,7 @@ The data acquisition was done acquired from the three different data sources. Th
 1. [John Hopkins University COVID-19 data](https://www.kaggle.com/datasets/antgoldbloom/covid19-data-from-john-hopkins-university)
 2. [masking mandates by county](https://data.cdc.gov/Policy-Surveillance/U-S-State-and-Territorial-Public-Mask-Mandates-Fro/62d6-pm5i)
 3. [mask compliance survey](https://github.com/nytimes/covid-19-data/tree/master/mask-use)
+4. [Franklin Unemployment](https://fred.stlouisfed.org/series/OHFRAN0URN)
 
 
 ## Directory Structure
@@ -24,6 +28,7 @@ The directory structure for the repository has been shown below in the form of a
 ├── raw_data
 │   ├── mask_use_by_county.csv
 │   ├── RAW_us_confirmed_cases.csv
+│   ├── Frankiln_Unemployment_Data.csv
 │   ├── US_State_and_Territorial_Public_Mask_Mandates_From_April_10__2020_through_August_15__2021_by_County_by_Day.csv
 │ 
 ├── plots
@@ -32,13 +37,14 @@ The directory structure for the repository has been shown below in the form of a
 │   └── partial_autocorrelation.png
 │   └── qqplot_ols_and_ARIMA.png
 │   └── ARIMA.png
+│   └── LSTM_output.png
 │ 
 ├── src
 │   └── Common_Analysis.ipynb
+│   └── Part_2_Extended_Analysis.ipynb
 │ 
-├── Analysis_results_explanation
-│   └── Visualization_Explanation.pdf
-│   └── Reflection Statement on Collaboration.pdf
+├── project_report
+│   └── Final_Project_doc.pd
 │ 
 ├── README.md
 └── LICENSE
@@ -88,6 +94,13 @@ The data description for the csv files is shown below:
 | `FREQUENTLY`              | Percentage of population in territory who FREQUENTLY wear the mask  |
 | `ALWAYS`                  | Percentage of population in territory who ALWAYS wear the mask  |
 
+4. #### Franklin Unmeployment Data - Frankiln_Unemployment_Data.csv
+
+| Column                    | Description                                                                        |
+| ------------------------- | -----------------------------------------------------------------------------------|
+| `Date`                | Date of the month in YYYY-MM-DD format                                               |
+| `Unemployment_Rate`                  | Percentage of unemployment in Franklin in Ohio           
+
 
 #### Note: 
 I have ignored the file csv US_State_and_Territorial_Public_Mask_Mandates_by_County_by_Day in my repository because of size issues. The same could be downloaded for reproducibilty for this assignment from [masking mandates by county](https://data.cdc.gov/Policy-Surveillance/U-S-State-and-Territorial-Public-Mask-Mandates-Fro/62d6-pm5i)
@@ -105,6 +118,9 @@ I have ignored the file csv US_State_and_Territorial_Public_Mask_Mandates_by_Cou
 
 ### ARIMA - Before_and_after_intervention_and_how_it_project_a _counterfactual for Franklin in Ohio
 ![ARIMA - Before_and_after_intervention_and_how_it_project_a _counterfactual](plots/ARIMA.png)
+
+### LSTM - Prediction of Unemployment Rate with number of days -Franklin in Ohio in United States of America
+![LSTM - Prediction of Unemployment Rate with number of days](plots/LSTM_output.png)
 
 ## License
 
